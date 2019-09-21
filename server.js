@@ -1,7 +1,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const db = require("./models");
+const { sequelize } = require("./models");
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("[OK] Postgresql");
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
+  });
 
 const app = express();
 
