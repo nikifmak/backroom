@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 
 const { sequelize } = require("./models");
 
+const suppliers = require("./routes/suppliers");
+
 sequelize
   .authenticate()
   .then(() => {
@@ -18,6 +20,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => res.json({ status: 200 }));
+
+/* Routes */
+app.use("/api/v1/suppliers", suppliers);
 
 const port = process.env.PORT || 5000;
 

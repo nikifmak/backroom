@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Item.associate = function(models) {
-    Item.belongsTo(modes.Supplier, {
+    Item.belongsTo(models.Supplier, {
       foreignKey: "supplierId",
       as: "supplier"
     });

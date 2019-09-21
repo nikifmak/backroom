@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
       url: DataTypes.STRING
     },
-    {}
+    { tableName: "suppliers" }
   );
   Supplier.associate = function(models) {
     Supplier.hasMany(models.Item, { as: "items" });
