@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
 // @route   GEt api/v1/suppliers/
 // @desc    Get all suppliers
 // @access  Public
-router.get("", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const suppliers = await Supplier.findAll({});
     res.json(suppliers);
