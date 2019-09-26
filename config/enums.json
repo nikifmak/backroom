@@ -1,0 +1,20 @@
+{
+  "styles": [
+    { "value": "modern", "label": "Modern" },
+    { "value": "traditional", "label": "Traditional" },
+    { "value": "vintage", "label": "Vintage" },
+    { "value": "contemporary", "label": "Contemporary" },
+    { "value": "ethnic", "label": "Ethnic" }
+  ],
+  "categories": [
+    { "value": "beds", "label": "Beds" },
+    { "value": "chairsStoolsBenches", "label": "Chairs, Stools, Benches" },
+    { "value": "decoration", "label": "Decoration" },
+    { "value": "desk", "label": "Desks" },
+    { "value": "floors", "label": "Floors" },
+    { "value": "library", "label": "Library" },
+    { "value": "lighting", "label": "Lighting" },
+    { "value": "sofasArmcharirs", "label": "Sofas, Armchairs" },
+    { "value": "tables", "label": "Tables" }
+  ]
+}
