@@ -4,7 +4,11 @@
     { "value": "traditional", "label": "Traditional" },
     { "value": "vintage", "label": "Vintage" },
     { "value": "contemporary", "label": "Contemporary" },
-    { "value": "ethnic", "label": "Ethnic" }
+    { "value": "ethnic", "label": "Ethnic" },
+    { "value": "minimal", "label": "Minimal" },
+    { "value": "country", "label": "Country" },
+    { "value": "industrial", "label": "Industrial" },
+    { "value": "bohemian", "label": "Bohemian" }
   ],
   "categories": [
     { "value": "beds", "label": "Beds" },
@@ -14,7 +18,7 @@
     { "value": "floors", "label": "Floors" },
     { "value": "library", "label": "Library" },
     { "value": "lighting", "label": "Lighting" },
-    { "value": "sofasArmcharirs", "label": "Sofas, Armchairs" },
+    { "value": "sofasArmchairs", "label": "Sofas, Armchairs" },
     { "value": "tables", "label": "Tables" }
   ]
 }
