@@ -15,13 +15,38 @@ module.exports = (sequelize, DataTypes) => {
       imageUrl: DataTypes.STRING,
       supplierId: DataTypes.INTEGER
     },
-    {}
+    { tableName: "items" }
   );
-  Item.associate = function(models) {
+
+  Item.associate = (models) => {
     Item.belongsTo(models.Supplier, {
       foreignKey: "supplierId",
-      as: "supplier"
+      targetKey: "id"
     });
   };
+
+  Item.getNextItemCode = async () => {
+    let result = await Item.findAll({
+      attributes: [[sequelize.fn("MAX", sequelize.col("code")), "maxCode"]]
+    });
+
+    let code = "";
+
+    if (!result) {
+      return null;
+    }
+
+    if (!result.maxCode) {
+      code = "item_00001";
+    } else {
+      let previousCode = result.maxCode.replace("item_", "");
+
+      console.log(previousCode);
+    }
+
+    console.log(code);
+    return code;
+  };
+
   return Item;
 };

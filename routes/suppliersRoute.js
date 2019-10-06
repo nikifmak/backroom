@@ -17,6 +17,7 @@ router.post("/", async (req, res) => {
     const supplier = await Supplier.create({ name, url });
     res.json(supplier);
   } catch (err) {
+    console.log(err);
     console.error(err.message);
     res.status(500).send("Server Error");
   }
@@ -27,7 +28,7 @@ router.post("/", async (req, res) => {
 // @access  Public
 router.get("/", async (req, res) => {
   try {
-    const suppliers = await Supplier.findAll({});
+    const suppliers = await Supplier.findAllWithItemCount();
     res.json(suppliers);
   } catch (err) {
     console.error(err.message);

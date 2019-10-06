@@ -3,8 +3,9 @@ const bodyParser = require("body-parser");
 
 const { sequelize } = require("./models");
 
-const suppliers = require("./routes/suppliers");
-const enums = require("./routes/enums");
+const suppliers = require("./routes/suppliersRoute");
+const enums = require("./routes/enumsRoute");
+const items = require("./routes/itemsRoute");
 
 sequelize
   .authenticate()
@@ -30,6 +31,7 @@ app.get("/", (req, res) => res.json({ status: 200 }));
 /* Routes */
 app.use("/api/v1/suppliers", suppliers);
 app.use("/api/v1/enums", enums);
+app.use("/api/v1/items", items);
 
 const port = process.env.PORT || 5000;
 

@@ -39,7 +39,7 @@ module.exports = {
         allowNull: false
       },
       styles: {
-        type: Sequelize.STRING,
+        type: Sequelize.JSONB,
         allowNull: false
       },
       imageUrl: {
@@ -52,6 +52,14 @@ module.exports = {
           model: "suppliers",
           key: "id"
         }
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
     });
   },
