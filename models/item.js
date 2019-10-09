@@ -20,13 +20,20 @@ module.exports = (sequelize, DataTypes) => {
 
   Item.associate = (models) => {
     Item.belongsTo(models.Supplier, {
-      foreignKey: "supplierId",
-      targetKey: "id"
+      foreignKey: "supplierId"
     });
   };
 
+  const padding = "00000";
+  const paddingLength = padding.length;
+
+  function addPadding(num) {
+    return (padding + num).substr(paddingLength * -1, paddingLength);
+  }
+
   Item.getNextItemCode = async () => {
-    let result = await Item.findAll({
+    let result = await Item.findOne({
+      raw: true,
       attributes: [[sequelize.fn("MAX", sequelize.col("code")), "maxCode"]]
     });
 
@@ -37,11 +44,13 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     if (!result.maxCode) {
+      console.log("asd");
       code = "item_00001";
     } else {
-      let previousCode = result.maxCode.replace("item_", "");
+      let previousCode = parseInt(result.maxCode.replace("item_", ""));
+      previousCode++;
 
-      console.log(previousCode);
+      code = "item_" + addPadding(previousCode);
     }
 
     console.log(code);
