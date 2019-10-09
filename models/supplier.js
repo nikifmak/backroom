@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
           attributes: []
         }
       ],
+      order: [["id", "ASC"]],
       group: ["Supplier.id"]
     });
   };
