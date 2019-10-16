@@ -8,7 +8,7 @@ const { Supplier } = require("../models");
 router.get("/test", (req, res) => res.json({ msg: "Suppliers Works" }));
 
 // @route   POST api/v1/suppliers/
-// @desc    Create or update a supplier
+// @desc    Create a supplier
 // @access  Public
 router.post("/", async (req, res) => {
   try {
@@ -19,6 +19,49 @@ router.post("/", async (req, res) => {
   } catch (err) {
     console.log(err);
     console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route   PUt api/v1/suppliers/
+// @desc    Update a supplier
+// @access  Public
+router.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const supplier = await Supplier.findByPk(id);
+
+    if (!supplier) {
+      return res.status(404).send({
+        message: "Not Found"
+      });
+    }
+    res.json(supplier);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route   PUt api/v1/suppliers/
+// @desc    Update a supplier
+// @access  Public
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, url } = req.body;
+    const supplier = await Supplier.findByPk(id);
+
+    if (!supplier) {
+      return res.status(404).send({
+        message: "Not Found"
+      });
+    }
+
+    const newSupplier = await supplier.update({ name, url });
+    res.json(newSupplier);
+  } catch (err) {
+    console.log(err);
     res.status(500).send("Server Error");
   }
 });

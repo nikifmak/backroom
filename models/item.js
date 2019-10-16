@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
       code: DataTypes.STRING,
       category: DataTypes.STRING,
-      styles: DataTypes.STRING,
+      styles: DataTypes.JSONB,
       height: DataTypes.FLOAT,
       length: DataTypes.FLOAT,
       weight: DataTypes.FLOAT,
