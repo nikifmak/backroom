@@ -23,8 +23,8 @@ router.post("/", async (req, res) => {
   }
 });
 
-// @route   PUt api/v1/suppliers/
-// @desc    Update a supplier
+// @route   GET api/v1/suppliers/
+// @desc    GET a supplier
 // @access  Public
 router.get("/:id", async (req, res) => {
   try {
@@ -37,6 +37,25 @@ router.get("/:id", async (req, res) => {
       });
     }
     res.json(supplier);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route   DELETE api/v1/suppliers/
+// @desc    delete a supplier
+// @access  Public
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const rowsDeleted = await Supplier.destroy({
+      where: {
+        id: id
+      }
+    });
+
+    res.json({ success: rowsDeleted === 1 });
   } catch (err) {
     console.log(err);
     res.status(500).send("Server Error");
