@@ -58,7 +58,7 @@ router.delete("/:id", async (req, res) => {
     res.json({ success: rowsDeleted === 1 });
   } catch (err) {
     console.log(err);
-    res.status(500).send("Server Error");
+    res.status(200).send({ success: false });
   }
 });
 
