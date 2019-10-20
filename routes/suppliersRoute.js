@@ -62,7 +62,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// @route   PUt api/v1/suppliers/
+// @route   PUT api/v1/suppliers/
 // @desc    Update a supplier
 // @access  Public
 router.put("/:id", async (req, res) => {

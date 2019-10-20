@@ -51,4 +51,28 @@ router.post("/", async (req, res) => {
   }
 });
 
+// @route   PUT api/v1/items/
+// @desc    Update a supplier
+// @access  Public
+router.put("/:code", async (req, res) => {
+  try {
+    console.log(req.body);
+    const item = await Item.findOne({
+      where: { code: req.params.code }
+    });
+
+    if (!item) {
+      return res.status(404).send({
+        message: "Not Found"
+      });
+    }
+
+    const newItem = await item.update({ ...req.body });
+    res.json(newItem);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server Error");
+  }
+});
+
 module.exports = router;
