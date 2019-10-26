@@ -9,6 +9,33 @@ router.get("/test", async (req, res) =>
   res.json({ msg: await Item.getNextItemCode() })
 );
 
+// LIMIT {itemsPerPage} OFFSET {(page - 1) * itemsPerPage}
+
+// @route   GET api/v1/items/
+// @desc    Get items
+// @access  Public
+router.get("/", async (req, res) => {
+  try {
+    let query = {};
+
+    const { limit, page } = req.params;
+
+    if (limit) {
+      query.limit = limit;
+    }
+
+    if (page && limit) {
+      query.offset = page - 1 * limit;
+    }
+
+    const items = await Item.findAll(query);
+    res.json(items);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server Error");
+  }
+});
+
 // @route   POST api/v1/items/
 // @desc    Create or update a supplier
 // @access  Public
