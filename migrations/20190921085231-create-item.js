@@ -45,6 +45,10 @@ module.exports = {
       imageUrl: {
         type: Sequelize.STRING
       },
+      url: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       supplierId: {
         type: Sequelize.INTEGER,
         allowNull: false,

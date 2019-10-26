@@ -56,10 +56,7 @@ router.post("/", async (req, res) => {
 // @access  Public
 router.put("/:code", async (req, res) => {
   try {
-    console.log(req.body);
-    const item = await Item.findOne({
-      where: { code: req.params.code }
-    });
+    const item = await Item.findWithSupplier(req.params.code);
 
     if (!item) {
       return res.status(404).send({
@@ -69,6 +66,26 @@ router.put("/:code", async (req, res) => {
 
     const newItem = await item.update({ ...req.body });
     res.json(newItem);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route   GET api/v1/items/
+// @desc    GET a item
+// @access  Public
+router.get("/:code", async (req, res) => {
+  try {
+    const item = await Item.findWithSupplier(req.params.code);
+
+    if (!item) {
+      return res.status(404).send({
+        message: "Not Found"
+      });
+    }
+
+    res.json(item);
   } catch (err) {
     console.log(err);
     res.status(500).send("Server Error");

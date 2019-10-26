@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       width: DataTypes.FLOAT,
       price: DataTypes.FLOAT,
       imageUrl: DataTypes.STRING,
-      supplierId: DataTypes.INTEGER
+      supplierId: DataTypes.INTEGER,
+      url: DataTypes.STRING
     },
     { tableName: "items" }
   );
@@ -55,6 +56,20 @@ module.exports = (sequelize, DataTypes) => {
 
     console.log(code);
     return code;
+  };
+
+  Item.findWithSupplier = (code) => {
+    return Item.findOne({
+      where: {
+        code
+      },
+      include: [
+        {
+          model: sequelize.models.Supplier,
+          attributes: ["id", "name", "url"]
+        }
+      ]
+    });
   };
 
   return Item;
