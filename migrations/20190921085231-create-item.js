@@ -39,8 +39,7 @@ module.exports = {
         allowNull: false
       },
       styles: {
-        type: Sequelize.JSONB,
-        allowNull: false
+        type: Sequelize.JSONB
       },
       imageUrl: {
         type: Sequelize.STRING

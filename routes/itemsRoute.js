@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
       query.offset = page - 1 * limit;
     }
 
-    const items = await Item.findAll(query);
+    const items = await Item.findAndCountAll(query);
     res.json(items);
   } catch (err) {
     console.log(err);
