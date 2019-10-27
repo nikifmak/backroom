@@ -16,17 +16,19 @@ router.get("/test", async (req, res) =>
 // @access  Public
 router.get("/", async (req, res) => {
   try {
+    const { pageSize, page } = req.query;
+
     let query = {};
 
-    const { limit, page } = req.params;
-
-    if (limit) {
-      query.limit = limit;
+    if (pageSize) {
+      query.limit = pageSize;
     }
 
-    if (page && limit) {
-      query.offset = page - 1 * limit;
+    if (page && pageSize) {
+      query.offset = (page - 1) * pageSize;
     }
+
+    console.log(query);
 
     const items = await Item.findAndCountAll(query);
     res.json(items);
