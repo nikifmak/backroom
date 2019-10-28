@@ -18,11 +18,9 @@ router.get("/", async (req, res) => {
   try {
     const { pageSize, page } = req.query;
 
-    let query = {};
-
-    if (pageSize) {
-      query.limit = pageSize;
-    }
+    let query = {
+      limit: pageSize || 10
+    };
 
     if (page && pageSize) {
       query.offset = (page - 1) * pageSize;

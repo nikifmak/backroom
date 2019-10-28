@@ -1,11 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const { Supplier } = require("../models");
+const authCheck = require("../middleware/authCheck");
 
 // @route   GET api/v1/suppliers/test
 // @desc    Tests post route
 // @access  Public
-router.get("/test", (req, res) => res.json({ msg: "Suppliers Works" }));
+router.get("/test", authCheck, (req, res) =>
+  res.json({ msg: "Suppliers Works" })
+);
 
 // @route   POST api/v1/suppliers/
 // @desc    Create a supplier
