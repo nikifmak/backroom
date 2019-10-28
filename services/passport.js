@@ -10,7 +10,7 @@ passport.use(
     (accessToken, refreshToken, profile, done) => {
       const email = profile.emails[0].value;
       if (["nikiforos@roomivate.com"].includes(email)) {
-        done(null, { name: profile.displayName, email, id: profile.id });
+        done(null, { email, id: profile.id });
       } else {
         done(null, null);
       }
