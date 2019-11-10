@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       price: DataTypes.FLOAT,
       imageUrl: DataTypes.STRING,
       supplierId: DataTypes.INTEGER,
-      url: DataTypes.STRING
+      url: DataTypes.STRING,
+      color: DataTypes.JSONB,
+      materials: DataTypes.STRING
     },
     { tableName: "items" }
   );
@@ -25,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  const padding = "00000";
+  const padding = "0000000";
   const paddingLength = padding.length;
 
   function addPadding(num) {
@@ -45,16 +47,14 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     if (!result.maxCode) {
-      console.log("asd");
-      code = "item_00001";
+      code = padding;
     } else {
-      let previousCode = parseInt(result.maxCode.replace("item_", ""));
+      let previousCode = parseInt(result.maxCode);
       previousCode++;
 
-      code = "item_" + addPadding(previousCode);
+      code = addPadding(previousCode);
     }
 
-    console.log(code);
     return code;
   };
 

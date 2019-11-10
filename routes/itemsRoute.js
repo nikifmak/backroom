@@ -57,6 +57,8 @@ router.post("/", async (req, res) => {
 
     const code = await Item.getNextItemCode();
 
+    console.log("code", code);
+
     const item = await Item.create({
       name,
       code,

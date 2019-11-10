@@ -41,7 +41,7 @@ app.get("/", (req, res) => res.json({ status: 200 }));
 
 app.use("/api/v1/suppliers", authMiddleware, suppliers);
 app.use("/api/v1/enums", authMiddleware, enums);
-app.use("/api/v1/items", authMiddleware, items);
+app.use("/api/v1/items", items);
 app.use("/api/v1/upload", authMiddleware, upload);
 app.use("/api/v1/auth", auth);
 
