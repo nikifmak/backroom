@@ -15,8 +15,9 @@ module.exports = (sequelize, DataTypes) => {
       imageUrl: DataTypes.STRING,
       supplierId: DataTypes.INTEGER,
       url: DataTypes.STRING,
-      color: DataTypes.JSONB,
-      materials: DataTypes.STRING
+      color: DataTypes.STRING,
+      materials: DataTypes.STRING,
+      collection: DataTypes.STRING
     },
     { tableName: "items" }
   );

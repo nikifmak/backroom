@@ -37,7 +37,7 @@ router.get("/", async (req, res) => {
 });
 
 // @route   POST api/v1/items/
-// @desc    Create or update a supplier
+// @desc    Create or update a item
 // @access  Public
 router.post("/", async (req, res) => {
   try {
@@ -52,12 +52,13 @@ router.post("/", async (req, res) => {
       width,
       price,
       imageUrl,
-      supplierId
+      supplierId,
+      collection,
+      color,
+      materials
     } = req.body;
 
     const code = await Item.getNextItemCode();
-
-    console.log("code", code);
 
     const item = await Item.create({
       name,
@@ -71,7 +72,10 @@ router.post("/", async (req, res) => {
       width,
       price,
       imageUrl,
-      supplierId
+      supplierId,
+      collection,
+      color,
+      materials
     });
     res.json(item);
   } catch (err) {
