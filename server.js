@@ -20,7 +20,7 @@ sequelize
   .then(() => {
     console.log("[OK] Postgresql");
   })
-  .catch((err) => {
+  .catch(err => {
     console.error("Unable to connect to the database:", err);
   });
 
@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 /* Routes */
-app.get("/", (req, res) => res.json({ status: 200 }));
+app.get("/", (req, res) => res.json({ status: 200, message: "hello" }));
 
 app.use("/api/v1/suppliers", authMiddleware, suppliers);
 app.use("/api/v1/enums", authMiddleware, enums);
