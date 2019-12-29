@@ -16,6 +16,13 @@ let sequelize = new Sequelize(
   }
 );
 
+sequelize
+  .getQueryInterface()
+  .showAllTables()
+  .then(function(rows) {
+    console.log(JSON.stringify(rows));
+  });
+
 fs.readdirSync(__dirname)
   .filter(file => {
     return (
