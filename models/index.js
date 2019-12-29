@@ -7,6 +7,7 @@ const basename = path.basename(__filename);
 const db = {};
 
 console.log(process.env);
+console.log("hello");
 
 let sequelize = new Sequelize(
   process.env.RDS_DATABASE,
