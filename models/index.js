@@ -6,6 +6,8 @@ const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
 const db = {};
 
+console.log(process.env);
+
 let sequelize = new Sequelize(
   process.env.RDS_DATABASE,
   process.env.RDS_USERNAME,
@@ -17,18 +19,18 @@ let sequelize = new Sequelize(
 );
 
 fs.readdirSync(__dirname)
-  .filter((file) => {
+  .filter(file => {
     return (
       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
     );
   })
-  .forEach((file) => {
+  .forEach(file => {
     const model = sequelize["import"](path.join(__dirname, file));
     console.log("model name", model.name);
     db[model.name] = model;
   });
 
-Object.keys(db).forEach((modelName) => {
+Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
