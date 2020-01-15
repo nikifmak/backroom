@@ -1,3 +1,9 @@
+# Migrations Sequelize
+
+## Create Migration
+
+`sequelize migration:create --name name_of_your_migration`
+
 ## Run Migration
 
 npx sequelize-cli db:migrate

@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       data: DataTypes.JSONB,
       type: DataTypes.STRING
     },
-    { tableName: "events" }
+    { tableName: "events", timestamps: false }
   );
 
   return Event;
