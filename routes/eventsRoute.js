@@ -34,4 +34,27 @@ router.post("/", async (req, res) => {
   }
 });
 
+// @route   GET api/v1/events/
+// @desc    Get event
+// @access  Public
+router.get("/", async (req, res) => {
+  try {
+    const { pageSize, page } = req.query;
+
+    let query = {
+      limit: pageSize || 10
+    };
+
+    if (page && pageSize) {
+      query.offset = (page - 1) * pageSize;
+    }
+
+    const objects = await Event.findAndCountAll(query);
+    res.json(objects);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server Error");
+  }
+});
+
 module.exports = router;

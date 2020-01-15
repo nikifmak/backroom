@@ -2,7 +2,7 @@
 
 ## Create Migration
 
-`sequelize migration:create --name name_of_your_migration`
+`sequelize migration:create --name addcolumn-updatedAt-event-table`
 
 ## Run Migration
 
