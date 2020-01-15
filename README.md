@@ -14,3 +14,21 @@ SELECT
 			SELECT
 				MAX(id) + 1 FROM suppliers), 1), FALSE);
 ```
+
+# Elastic bean stalk commands
+
+## `eb console`
+
+opens on browser the instance console
+
+## `eb deploy -m "added michalis+dimos"`
+
+Deploys the new code from the current folder to the available instances
+
+## `eb logs`
+
+Tails the latest logs
+
+## `eb scale`
+
+Adds a new instance
