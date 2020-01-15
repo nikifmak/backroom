@@ -37,7 +37,7 @@ router.get("/", async (req, res) => {
 });
 
 // @route   POST api/v1/items/
-// @desc    Create or update a item
+// @desc    Create a item
 // @access  Public
 router.post("/", async (req, res) => {
   try {
