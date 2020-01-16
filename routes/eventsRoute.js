@@ -12,11 +12,28 @@ router.get("/test", async (req, res) => res.json({ msg: "hello from test" }));
 // @access  Public
 router.post("/", async (req, res) => {
   try {
-    const { type, origin } = req.query;
-    const { data } = req.body;
+    const { type } = req.query;
+    let data;
 
     if (!["view", "redirect"].includes(type)) {
       throw Error;
+    }
+
+    const {
+      origin,
+      itemId,
+      deliverableId,
+      version,
+      itemUrl,
+      supplier
+    } = req.body;
+
+    if (type === "view") {
+      data = { itemId, deliverableId, version };
+    }
+
+    if (type === "redirect") {
+      data = { itemId, deliverableId, version, itemUrl, supplier };
     }
 
     await Event.create({
@@ -42,7 +59,7 @@ router.get("/", async (req, res) => {
     const { pageSize, page } = req.query;
 
     let query = {
-      limit: pageSize || 10
+      limit: pageSize || 100
     };
 
     if (page && pageSize) {
