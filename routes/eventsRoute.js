@@ -22,18 +22,18 @@ router.post("/", async (req, res) => {
     const {
       origin,
       itemId,
-      deliverableId,
+      deliverableID,
       version,
       itemUrl,
       supplier
     } = req.body;
 
     if (type === "view") {
-      data = { itemId, deliverableId, version };
+      data = { itemId, deliverableID, version };
     }
 
     if (type === "redirect") {
-      data = { itemId, deliverableId, version, itemUrl, supplier };
+      data = { itemId, deliverableID, version, itemUrl, supplier };
     }
 
     await Event.create({
