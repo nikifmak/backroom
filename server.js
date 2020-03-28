@@ -13,6 +13,7 @@ const items = require("./routes/itemsRoute");
 const events = require("./routes/eventsRoute");
 const upload = require("./routes/uploadRoute");
 const auth = require("./routes/authRoute");
+const rng = require("./routes/rngRoute");
 
 const authMiddleware = require("./middleware/authCheck");
 
@@ -41,9 +42,10 @@ app.use(passport.initialize());
 app.get("/", (req, res) => res.json({ status: 200, message: "hello" }));
 
 app.use("/api/v1/suppliers", authMiddleware, suppliers);
-app.use("/api/v1/enums", authMiddleware, enums);
+app.use("/api/v1/enums", enums);
 app.use("/api/v1/items", items);
 app.use("/api/v1/events", events);
+app.use("/api/v1/rng", rng);
 app.use("/api/v1/upload", authMiddleware, upload);
 app.use("/api/v1/auth", auth);
 
